@@ -22,7 +22,7 @@ The compiled site is written to `dist/` and is ready for Vercel or another stati
 
 The custom-styled form sends `name`, `email`, `interest` and `message` directly to Formspree. It includes browser validation, Formspree's `_gotcha` honeypot field, loading feedback and an AJAX success state.
 
-The production site is configured through `VITE_FORM_ENDPOINT` in `.env`, currently set to `https://formspree.io/f/xljrqvzz`. Vite injects this public form endpoint into both the HTML form action and the JavaScript submission handler at build time.
+The production site is configured to submit to `https://formspree.io/f/xljrqvzz`.
 
 ## Vercel deployment
 
@@ -31,9 +31,8 @@ Vercel detects this as a Vite project. Use `npm run build` as the build command 
 The supplied Formspree endpoint is already connected. To replace it later:
 
 1. Create a form in Formspree and copy its endpoint, such as `https://formspree.io/f/your-form-id`.
-2. Update `VITE_FORM_ENDPOINT` in `.env` for local builds.
-3. If Vercel should use a different endpoint, add `VITE_FORM_ENDPOINT` under **Project Settings → Environment Variables** for Production and Preview.
-4. Redeploy the site so Vite can include the value in the new build.
+2. Replace the endpoint in `index.html` and `src/main.js`.
+3. Rebuild and redeploy the site.
 
 ## Before launch
 

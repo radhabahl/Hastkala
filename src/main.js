@@ -263,7 +263,7 @@ dialog?.addEventListener('close', () => activeDialogTrigger?.focus());
 
 const enquiryForm = document.querySelector('#enquiry-form');
 const formStatus = enquiryForm?.querySelector('[data-form-status]');
-const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT?.trim() || 'https://formspree.io/f/xljrqvzz';
+const formEndpoint = 'https://formspree.io/f/xljrqvzz';
 const enquiryMessage = enquiryForm?.elements.namedItem('message');
 
 const updateEnquiryPlaceholder = () => {
