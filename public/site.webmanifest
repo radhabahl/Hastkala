@@ -1,0 +1,17 @@
+{
+  "name": "Hasta Kalā",
+  "short_name": "Hasta Kalā",
+  "description": "Folk art, carried forward through useful, hand-finished textile pieces.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f0e4",
+  "theme_color": "#741f28",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
