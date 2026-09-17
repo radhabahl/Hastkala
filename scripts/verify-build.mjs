@@ -30,7 +30,12 @@ for (const filename of htmlFiles) {
     try {
       await access(join(dist, cleanPath));
     } catch {
-      failures.push(`${filename}: missing local asset ${cleanPath}`);
+      // Pages are linked without their extension, because the host serves clean URLs.
+      try {
+        await access(join(dist, `${cleanPath}.html`));
+      } catch {
+        failures.push(`${filename}: missing local asset ${cleanPath}`);
+      }
     }
   }
 }

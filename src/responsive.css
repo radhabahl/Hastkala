@@ -1954,6 +1954,16 @@ body {
 }
 
 @media (max-width: 620px) {
+  .film-watch__play::before {
+    width: 62px;
+    height: 62px;
+  }
+
+  .film-watch__play-label {
+    bottom: 14px;
+    font-size: 0.64rem;
+  }
+
   .film-banner__logline {
     font-size: 0.9rem;
   }

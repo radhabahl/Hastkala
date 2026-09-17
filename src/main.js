@@ -2,7 +2,23 @@ import './styles.css';
 import './responsive.css';
 
 // Replace this one value with the documentary URL when the film is released.
-const YOUTUBE_FILM_URL = 'https://drive.google.com/file/d/1xXJkoDLbK0jQx4D3b6i95kH_JbTXupoN/view?usp=sharing';
+const FILM_SHARE_URL = 'https://drive.google.com/file/d/1xXJkoDLbK0jQx4D3b6i95kH_JbTXupoN/view?usp=sharing';
+
+// The page plays the film in place rather than sending people away, so it needs the embeddable
+// form of that share link. Google Drive serves it from /preview; YouTube and Vimeo from their
+// own /embed paths. Anything unrecognised falls back to the share link itself.
+const filmEmbedUrl = (shareUrl) => {
+  const drive = shareUrl.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (drive) return `https://drive.google.com/file/d/${drive[1]}/preview`;
+
+  const youtube = shareUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+  if (youtube) return `https://www.youtube-nocookie.com/embed/${youtube[1]}?autoplay=1&rel=0`;
+
+  const vimeo = shareUrl.match(/vimeo\.com\/(\d+)/);
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1`;
+
+  return shareUrl;
+};
 
 
 
@@ -123,8 +139,8 @@ const products = {
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('[data-menu]');
-document.querySelectorAll('[data-youtube-link]').forEach((youtubeLink) => {
-  if (youtubeLink instanceof HTMLAnchorElement) youtubeLink.href = YOUTUBE_FILM_URL;
+document.querySelectorAll('[data-film-link]').forEach((filmLink) => {
+  if (filmLink instanceof HTMLAnchorElement) filmLink.href = FILM_SHARE_URL;
 });
 
 const closeMenu = () => {
@@ -392,6 +408,34 @@ if (bannerVideo instanceof HTMLVideoElement && !prefersReducedMotion && window.i
   bannerVideo.src = bannerVideo.dataset.src ?? '';
   bannerVideo.play().catch(() => bannerVideo.removeAttribute('src'));
 }
+
+// Film page: swap the poster for the embedded player on demand, so the third-party
+// iframe is only loaded for people who actually choose to watch.
+const filmPlayer = document.querySelector('[data-film-player]');
+
+const startFilm = () => {
+  if (!filmPlayer || filmPlayer.classList.contains('is-playing')) return;
+
+  const frame = document.createElement('iframe');
+  frame.src = filmEmbedUrl(FILM_SHARE_URL);
+  frame.title = 'Inheritance — the documentary';
+  frame.allow = 'autoplay; fullscreen; encrypted-media; picture-in-picture';
+  frame.allowFullscreen = true;
+  frame.loading = 'lazy';
+
+  filmPlayer.classList.add('is-playing');
+  filmPlayer.append(frame);
+  frame.focus();
+};
+
+filmPlayer?.querySelector('[data-film-play]')?.addEventListener('click', startFilm);
+
+document.querySelectorAll('[data-film-jump]').forEach((jump) => {
+  jump.addEventListener('click', () => {
+    // The href already scrolls to the player; starting it saves a second click.
+    window.setTimeout(startFilm, prefersReducedMotion ? 0 : 450);
+  });
+});
 
 // Film page: enlarge a still in a lightbox.
 const stillDialog = document.querySelector('[data-still-dialog]');

@@ -128,19 +128,48 @@
             <b>what keeps a tradition alive?</b>
           </p>
           <div class="film-banner__actions">
-            <a
-              class="button button--gold"
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-youtube-link
-            >
-              Watch the film <span aria-hidden="true">↗</span>
+            <a class="button button--gold" href="#watch" data-film-jump>
+              Watch the film <span aria-hidden="true">↓</span>
             </a>
             <a class="text-link text-link--light" href="#film-synopsis">
               <b>Read the synopsis</b><span aria-hidden="true">↓</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <!-- Watch ------------------------------------------------------------->
+      <section class="film-watch section-anchor" id="watch" aria-labelledby="film-watch-title">
+        <div class="container film-watch__inner">
+          <p class="eyebrow eyebrow--gold"><span></span> Watch</p>
+          <h2 id="film-watch-title">Inheritance, in full</h2>
+
+          <div class="film-watch__frame" data-film-player>
+            <img
+              class="film-watch__still"
+              src="/images/film/still-01.jpg"
+              srcset="/images/film/still-01-800.jpg 800w, /images/film/still-01.jpg 1600w"
+              sizes="(max-width: 980px) 92vw, 1100px"
+              width="1600"
+              height="900"
+              alt="Mist drifting across forested Himalayan ridges in the Kangra Valley"
+              loading="lazy"
+            />
+            <button class="film-watch__play" type="button" data-film-play aria-label="Play Inheritance">
+              <span class="film-watch__play-label">Play the film</span>
+            </button>
+          </div>
+
+          <p class="film-watch__note">
+            Having trouble with the player?
+            <a
+              href="https://drive.google.com/file/d/1xXJkoDLbK0jQx4D3b6i95kH_JbTXupoN/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-film-link
+              >Open the film in a new tab ↗</a
+            >
+          </p>
         </div>
       </section>
 
@@ -566,14 +595,8 @@
             ensuring that its story continues to be written through new hands, new voices and new generations.
           </p>
           <div class="film-closing__actions">
-            <a
-              class="button button--gold"
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-youtube-link
-            >
-              Watch the film <span aria-hidden="true">↗</span>
+            <a class="button button--gold" href="#watch" data-film-jump>
+              Watch the film <span aria-hidden="true">↑</span>
             </a>
             <a class="text-link text-link--light" href="/#collection">
               <b>Back to the collection</b><span aria-hidden="true">→</span>
@@ -596,7 +619,7 @@
         <nav aria-label="Footer navigation">
           <a href="/#collection">Collection</a>
           <a href="/#story">Story</a>
-          <a href="/privacy.html">Privacy</a>
+          <a href="/privacy">Privacy</a>
           <a href="mailto:radhabahl22@gmail.com">Contact</a>
         </nav>
         <p>Made in support of Chinmaya Organisation for Rural Development (CORD)</p>

@@ -5082,6 +5082,118 @@ button {
   gap: 18px 32px;
 }
 
+/* Watch */
+.film-watch {
+  background: #1a2433;
+  color: var(--cream);
+  padding-block: clamp(54px, 8vh, 96px);
+}
+
+.film-watch__inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.film-watch .eyebrow {
+  justify-content: center;
+}
+
+.film-watch h2 {
+  margin: 0 0 clamp(24px, 3vw, 38px);
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.film-watch__frame {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 1100px);
+  aspect-ratio: 16 / 9;
+  background: #0d1218;
+  box-shadow: var(--shadow);
+}
+
+.film-watch__still {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-watch__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.film-watch__frame.is-playing .film-watch__still,
+.film-watch__frame.is-playing .film-watch__play {
+  display: none;
+}
+
+.film-watch__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  place-items: center;
+  border: 0;
+  background: rgba(10, 14, 20, 0.28);
+  transition: background 220ms ease;
+}
+
+.film-watch__play:hover {
+  background: rgba(10, 14, 20, 0.14);
+}
+
+.film-watch__play::before {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.94);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+  content: "";
+}
+
+.film-watch__play::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 19px solid var(--wine);
+  margin-left: 5px;
+  content: "";
+}
+
+.film-watch__play-label {
+  position: absolute;
+  bottom: 22px;
+  color: var(--cream);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.film-watch__note {
+  margin: 20px 0 0;
+  color: #a9b3c1;
+  font-size: 0.78rem;
+}
+
+.film-watch__note a {
+  color: var(--gold);
+  text-underline-offset: 3px;
+}
+
 /* Poster and synopsis */
 .film-synopsis {
   background: var(--cream);

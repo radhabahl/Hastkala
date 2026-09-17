@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/",
@@ -10,7 +11,7 @@
       ]
     },
     {
-      "source": "/film.html",
+      "source": "/film",
       "headers": [
         {
           "key": "Cache-Control",
@@ -19,7 +20,7 @@
       ]
     },
     {
-      "source": "/privacy.html",
+      "source": "/privacy",
       "headers": [
         {
           "key": "Cache-Control",
@@ -28,7 +29,7 @@
       ]
     },
     {
-      "source": "/thank-you.html",
+      "source": "/thank-you",
       "headers": [
         {
           "key": "Cache-Control",
