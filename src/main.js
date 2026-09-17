@@ -2,7 +2,7 @@ import './styles.css';
 import './responsive.css';
 
 // Replace this one value with the documentary URL when the film is released.
-const YOUTUBE_FILM_URL = 'https://www.youtube.com/';
+const YOUTUBE_FILM_URL = 'https://drive.google.com/file/d/1xXJkoDLbK0jQx4D3b6i95kH_JbTXupoN/view?usp=sharing';
 
 const products = {
   warli: {
@@ -379,3 +379,42 @@ window.addEventListener(
 );
 window.addEventListener('resize', updateHeroParallax);
 updateHeroParallax();
+
+// Film page: the banner loop is a 5 MB download, so only wider screens that have not
+// asked for reduced motion ever fetch it. Everyone else keeps the poster still.
+const bannerVideo = document.querySelector('[data-banner-video]');
+
+if (bannerVideo instanceof HTMLVideoElement && !prefersReducedMotion && window.innerWidth >= 900) {
+  bannerVideo.addEventListener('playing', () => bannerVideo.classList.add('is-playing'), { once: true });
+  bannerVideo.src = bannerVideo.dataset.src ?? '';
+  bannerVideo.play().catch(() => bannerVideo.removeAttribute('src'));
+}
+
+// Film page: enlarge a still in a lightbox.
+const stillDialog = document.querySelector('[data-still-dialog]');
+const stillDialogImage = stillDialog?.querySelector('[data-still-image]');
+const stillDialogCaption = stillDialog?.querySelector('[data-still-caption]');
+let activeStillTrigger = null;
+
+document.querySelectorAll('[data-still-open]').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    const image = trigger.querySelector('img');
+    if (!(stillDialog instanceof HTMLDialogElement) || !(image instanceof HTMLImageElement)) return;
+
+    activeStillTrigger = trigger;
+    if (stillDialogImage instanceof HTMLImageElement) {
+      stillDialogImage.src = image.currentSrc || image.src;
+      stillDialogImage.alt = image.alt;
+    }
+    if (stillDialogCaption) {
+      stillDialogCaption.textContent = trigger.closest('figure')?.querySelector('figcaption')?.textContent ?? '';
+    }
+    stillDialog.showModal();
+  });
+});
+
+stillDialog?.querySelector('[data-still-close]')?.addEventListener('click', () => stillDialog.close());
+stillDialog?.addEventListener('click', (event) => {
+  if (event.target === stillDialog) stillDialog.close();
+});
+stillDialog?.addEventListener('close', () => activeStillTrigger?.focus());

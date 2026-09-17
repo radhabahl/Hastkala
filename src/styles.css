@@ -3646,7 +3646,6 @@ button {
 
 .media-film__button {
   color: var(--cream);
-  cursor: default;
 }
 
 .media-film__text small {
@@ -4988,4 +4987,591 @@ button {
     grid-template-columns: 1fr;
     gap: 3px;
   }
+}
+
+/* Film page ---------------------------------------------------------------- */
+.film-page {
+  background: var(--paper);
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Banner */
+.film-banner {
+  position: relative;
+  display: grid;
+  min-height: min(92svh, 860px);
+  align-items: end;
+  background: #12191b;
+  color: var(--cream);
+  isolation: isolate;
+  padding-block: clamp(120px, 16vh, 190px) clamp(48px, 7vh, 82px);
+}
+
+.film-banner__media {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.film-banner__media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 14, 16, 0.62) 0%, rgba(10, 14, 16, 0.3) 42%, rgba(10, 14, 16, 0.88) 100%);
+  content: "";
+}
+
+.film-banner__still,
+.film-banner__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-banner__video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+/* The video only reveals itself once it is actually playing, so the still never flashes. */
+.film-banner__video.is-playing {
+  opacity: 1;
+}
+
+.film-banner__inner {
+  max-width: min(100%, 1240px);
+}
+
+.film-banner h1 {
+  max-width: 14ch;
+  margin: 0 0 22px;
+  font-family: var(--display);
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.film-banner__logline {
+  max-width: 62ch;
+  margin: 0 0 32px;
+  color: #ded6c6;
+  font-size: clamp(0.95rem, 1.1vw, 1.06rem);
+}
+
+.film-banner__logline b {
+  color: var(--cream);
+}
+
+.film-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 32px;
+}
+
+/* Poster and synopsis */
+.film-synopsis {
+  background: var(--cream);
+  padding-block: clamp(64px, 9vh, 116px);
+}
+
+.film-synopsis__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 88px);
+}
+
+.film-synopsis__poster {
+  position: sticky;
+  top: 118px;
+  width: min(100%, 420px);
+  margin: 0;
+  justify-self: center;
+}
+
+.film-synopsis__poster .stitched-frame {
+  transform: rotate(-1.2deg);
+}
+
+.film-synopsis__text h2 {
+  margin: 0 0 22px;
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.film-synopsis__text p {
+  max-width: 68ch;
+  margin: 0 0 20px;
+  color: #4f4640;
+}
+
+.film-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px 32px;
+  border-top: 1px solid var(--line);
+  margin: 38px 0 0;
+  padding-top: 26px;
+}
+
+.film-facts dt {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.film-facts dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+}
+
+/* Central question */
+.film-question {
+  background: #24344a;
+  color: var(--cream);
+  padding-block: clamp(66px, 10vh, 122px);
+  text-align: center;
+}
+
+.film-question__inner {
+  display: grid;
+  justify-items: center;
+}
+
+.film-question .eyebrow {
+  justify-content: center;
+}
+
+.film-question blockquote {
+  max-width: min(100%, 880px);
+  margin: 0;
+}
+
+.film-question blockquote p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.film-question__body {
+  max-width: 68ch;
+  margin: 30px 0 0;
+  color: #d9d2bf;
+}
+
+/* Why this story */
+.film-why {
+  background: var(--paper);
+  padding-block: clamp(64px, 9vh, 112px);
+}
+
+.film-why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 84px);
+}
+
+.film-why__text h2 {
+  max-width: 20ch;
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.film-why__text p {
+  max-width: 66ch;
+  margin: 0 0 20px;
+  color: #4f4640;
+}
+
+.film-themes {
+  border: 1px dashed var(--line);
+  background: var(--cream);
+  padding: 30px 28px;
+}
+
+.film-themes h3 {
+  margin: 0 0 18px;
+  color: var(--wine);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.film-themes ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.film-themes li {
+  border: 1px solid var(--line);
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Film stills */
+.film-stills {
+  background: var(--paper);
+  padding-block: clamp(56px, 8vh, 100px);
+}
+
+.film-stills__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px 48px;
+  margin-bottom: clamp(28px, 4vw, 46px);
+}
+
+.film-stills__head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.film-stills__head > p {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--muted);
+}
+
+.film-stills__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.film-still {
+  grid-column: span 2;
+}
+
+.film-still figure {
+  margin: 0;
+}
+
+.film-still:nth-child(1),
+.film-still:nth-child(2),
+.film-still:nth-child(6),
+.film-still:nth-child(7) {
+  grid-column: span 3;
+}
+
+.film-still button {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--paper-2);
+}
+
+.film-still img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.film-still button:hover img,
+.film-still button:focus-visible img {
+  transform: scale(1.035);
+}
+
+.film-still figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Still lightbox */
+.still-dialog {
+  width: min(1180px, calc(100% - 40px));
+  max-height: calc(100dvh - 48px);
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.still-dialog::backdrop {
+  background: rgba(18, 14, 11, 0.88);
+  backdrop-filter: blur(5px);
+}
+
+.still-dialog figure {
+  margin: 0;
+}
+
+.still-dialog img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 120px);
+  object-fit: contain;
+}
+
+.still-dialog figcaption {
+  margin-top: 14px;
+  color: var(--cream);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.still-dialog__close {
+  position: absolute;
+  z-index: 3;
+  top: 15px;
+  right: 15px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Narrative structure */
+.film-chapters {
+  background: var(--ink);
+  color: var(--cream);
+  padding-block: clamp(64px, 9vh, 116px);
+}
+
+.film-chapters__head {
+  margin-bottom: clamp(34px, 5vw, 58px);
+}
+
+.film-chapters__head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.film-chapters__list {
+  display: grid;
+  gap: clamp(28px, 3.4vw, 46px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.film-chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr);
+  align-items: start;
+  column-gap: clamp(20px, 3vw, 56px);
+  row-gap: 0;
+  border-top: 1px solid rgba(255, 250, 240, 0.16);
+  padding-top: clamp(24px, 3vw, 38px);
+}
+
+.film-chapter__index {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.film-chapter h3 {
+  grid-column: 2;
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.3vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.film-chapter p:not(.film-chapter__index) {
+  grid-column: 2;
+  max-width: 72ch;
+  margin: 0 0 16px;
+  color: #cdc5b6;
+}
+
+.film-chapter p:last-child {
+  margin-bottom: 0;
+}
+
+/* Visual language and sound design */
+.film-craft {
+  background: var(--paper-2);
+  padding-block: clamp(60px, 8vh, 108px);
+}
+
+.film-craft__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.film-craft__card {
+  border: 1px dashed var(--line);
+  background: var(--cream);
+  padding: clamp(26px, 3vw, 42px);
+}
+
+.film-craft__card p:not(.eyebrow) {
+  margin: 0 0 18px;
+  color: #4f4640;
+}
+
+.film-craft__card p:last-child {
+  margin-bottom: 0;
+}
+
+/* The filmmaker */
+.film-maker {
+  background: var(--cream);
+  padding-block: clamp(64px, 9vh, 116px);
+}
+
+.film-maker__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 84px);
+}
+
+.film-maker__photo {
+  width: min(100%, 360px);
+  margin: 0;
+  justify-self: center;
+}
+
+.film-maker__photo .stitched-frame {
+  transform: rotate(1.4deg);
+}
+
+.film-maker__photo figcaption {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.film-maker__text h2 {
+  margin: 0 0 20px;
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.film-maker__bio {
+  max-width: 68ch;
+  margin: 0 0 30px;
+  color: #4f4640;
+}
+
+.film-maker__quote {
+  border-left: 2px solid var(--gold);
+  margin: 0;
+  padding-left: clamp(20px, 2.4vw, 32px);
+}
+
+.film-maker__quote p {
+  max-width: 66ch;
+  margin: 0 0 18px;
+  color: #4f4640;
+  font-family: var(--serif);
+  font-size: 1.04rem;
+}
+
+.film-maker__quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Closing statement */
+.film-closing {
+  background: var(--wine);
+  color: var(--cream);
+  padding-block: clamp(66px, 10vh, 126px);
+  text-align: center;
+}
+
+.film-closing__inner {
+  display: grid;
+  justify-items: center;
+}
+
+.film-closing blockquote {
+  max-width: min(100%, 820px);
+  margin: 0;
+}
+
+.film-closing blockquote p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.4vw, 2.85rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.22;
+}
+
+.film-closing__body {
+  max-width: 62ch;
+  margin: 28px 0 38px;
+  color: #ecd9c6;
+}
+
+.film-closing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 32px;
 }

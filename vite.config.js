@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
+        film: resolve(import.meta.dirname, 'film.html'),
         privacy: resolve(import.meta.dirname, 'privacy.html'),
         notFound: resolve(import.meta.dirname, '404.html'),
         thankYou: resolve(import.meta.dirname, 'thank-you.html'),
