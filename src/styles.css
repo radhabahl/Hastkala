@@ -3555,7 +3555,7 @@ button {
 
 .media-film__photo {
   position: relative;
-  width: min(100%, 500px);
+  width: min(100%, 400px);
   margin: 0;
   justify-self: center;
 }

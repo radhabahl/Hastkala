@@ -74,7 +74,8 @@
           <a href="#collection">Collection</a>
           <a href="#process">How it’s made</a>
           <a href="#story">Our story</a>
-          <a href="#journal">Book &amp; film</a>
+          <a href="#book">Book</a>
+          <a href="/film">Film</a>
           <a class="nav-cta" href="#contact">
             Enquire
             <span class="nav-cta__icon" aria-hidden="true">
@@ -416,7 +417,15 @@
         <div class="container media-film__grid section-anchor" id="journal">
           <figure class="media-film__photo reveal">
             <div class="stitched-frame stitched-frame--gold">
-              <img src="/images/documentary-still.png" width="859" height="923" alt="Still from Inheritance, a documentary about Kangra painting" loading="lazy" />
+              <img
+                src="/images/film/poster.jpg"
+                srcset="/images/film/poster-640.jpg 640w, /images/film/poster.jpg 1200w"
+                sizes="(max-width: 980px) 70vw, 400px"
+                width="848"
+                height="1200"
+                alt="Poster for Inheritance, showing a magnifying glass over a Kangra miniature of Vishnu and Lakshmi"
+                loading="lazy"
+              />
             </div>
             <a
               class="media-film__play"
@@ -428,8 +437,9 @@
             <p class="eyebrow eyebrow--gold"><span></span> Kangra painting, on film</p>
             <h2 id="film-title">The documentary: Inheritance</h2>
             <p>
-              A short film on how Kangra painting continues to live today through artists trained by
-              Chinmaya Organisation for Rural Development (CORD) — the real, living example that shaped this project.
+              A short film on how Kangra painting continues to live today — through the master painters who
+              teach it and the new artists learning it, including those training with Chinmaya Organisation
+              for Rural Development (CORD).
             </p>
             <a class="media-film__button" href="/film">
               Explore the film <span aria-hidden="true">→</span>
@@ -441,7 +451,7 @@
       <div class="container"><div class="section-divider"></div></div>
 
       <section class="media-book" aria-labelledby="book-title">
-        <div class="container media-book__grid">
+        <div class="container media-book__grid section-anchor" id="book">
           <figure class="media-book__cover reveal">
             <div class="stitched-frame">
               <img src="/images/book-front.png" width="900" height="900" alt="Illustrated front cover of Hasta Kalā by Radha Bahl" loading="lazy" />
