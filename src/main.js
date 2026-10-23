@@ -2,7 +2,7 @@ import './styles.css';
 import './responsive.css';
 
 // Replace this one value with the documentary URL when the film is released.
-const FILM_SHARE_URL = 'https://drive.google.com/file/d/1xXJkoDLbK0jQx4D3b6i95kH_JbTXupoN/view?usp=sharing';
+const FILM_SHARE_URL = 'https://youtu.be/C3F-KIzLZxg';
 
 // The page plays the film in place rather than sending people away, so it needs the embeddable
 // form of that share link. Google Drive serves it from /preview; YouTube and Vimeo from their
